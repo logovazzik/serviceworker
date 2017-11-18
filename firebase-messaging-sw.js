@@ -1,10 +1,15 @@
 importScripts('https://www.gstatic.com/firebasejs/3.7.2/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/3.7.2/firebase-messaging.js');
 
-firebase.initializeApp({
-    'messagingSenderId': '448358493027'
-});
-
+var config = {
+        apiKey: "AIzaSyBXH1N-C-3Gi80tglAOQccdurbjukhu2Io",
+        authDomain: "logovazzik-otn.firebaseapp.com",
+        databaseURL: "https://logovazzik-otn.firebaseio.com",
+        projectId: "logovazzik-otn",
+        storageBucket: "logovazzik-otn.appspot.com",
+        messagingSenderId: "314128418145"
+    };
+    firebase.initializeApp(config);
 firebase.messaging();
 
 self.addEventListener('notificationclick', function(event) {
