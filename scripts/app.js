@@ -66,7 +66,8 @@ function View() {
                 subscriptions: [
                     {
                         type: "BCH",
-                        value: 1000
+                        value: 0,
+						deviation: 20
                     }
                 ]
             })
