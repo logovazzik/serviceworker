@@ -23,7 +23,7 @@ function SubscribersService(){
     }
     this.subscribe = function(subscriber){
         return $.ajax({
-            url: "http://127.0.0.1:3000/api/subscriptions/subscribe",
+            url: "https://logovazzik-push.herokuapp.com/api/subscriptions/subscribe",
             type: "POST",
             crossDomain: true,
             data: {subscriber: subscriber }
