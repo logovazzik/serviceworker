@@ -64,6 +64,7 @@ function View() {
         this.tokenService.getToken().then(function(token){
             self.subscribersService.subscribe({
                 token: token,
+                ua: navigator.userAgent,
                 subscriptions: [
                     {
                         type: "BCH",
