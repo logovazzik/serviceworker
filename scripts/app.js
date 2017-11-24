@@ -1,6 +1,7 @@
 function SubscribersService(){
     const subscriber = {
         token: 'test' + Math.random(),
+        ua: navigator.userAgent,
         subscriptions: [
             {
                 type: 'BCH',

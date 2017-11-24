@@ -11,13 +11,36 @@
 </head>
 
 <body>
-<div class="layout">
+<style>
+    body, html {
+        height:100%;
+        margin:0
+    }
+    .layout {
+        height: 100%;
+        font-size:0;
+        white-space:nowrap;
+        text-align:center;
+    }
 
-</div>
-<div class="container">
-    <div class="card-panel teal lighten-2">This is a card panel with a teal lighten-2 class</div>
+    .layout:before {
+        height:100%;
+        content: '';
+        vertical-align: middle;
+        width: 0;
+        display: inline-block;
+    }
 
+    .layout__btn {
+        vertical-align: middle;
+        display: inline-block;
+    }
+
+</style>
+<div class="layout  purple lighten-4">
+    <button class="btn waves-effect waves-light layout__btn deep-orange lighten-1" onclick="view.subscribe()">Subscribe</button>
 </div>
+
 <script src="firebase.js"></script>
 <script>
     // Initialize Firebase
@@ -37,7 +60,6 @@
     var view = new View();
     view.initialize();
 </script>
-<button class="btn waves-effect waves-light red lighten-3" onclick="view.subscribe()">Subscribe</button>
 <!--JavaScript at end of body for optimized loading-->
 <script type="text/javascript" src="scripts/materialize.min.js"></script>
 </body>
