@@ -69,7 +69,7 @@ function View() {
                     {
                         type: "BCH",
                         value: 0,
-						deviation: 20
+						deviation: 1
                     }
                 ]
             })
