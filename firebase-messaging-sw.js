@@ -2,14 +2,14 @@ importScripts('https://www.gstatic.com/firebasejs/3.7.2/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/3.7.2/firebase-messaging.js');
 
 var config = {
-        apiKey: "AIzaSyBXH1N-C-3Gi80tglAOQccdurbjukhu2Io",
-        authDomain: "logovazzik-otn.firebaseapp.com",
-        databaseURL: "https://logovazzik-otn.firebaseio.com",
-        projectId: "logovazzik-otn",
-        storageBucket: "logovazzik-otn.appspot.com",
-        messagingSenderId: "314128418145"
-    };
-    firebase.initializeApp(config);
+    apiKey: "AIzaSyBXH1N-C-3Gi80tglAOQccdurbjukhu2Io",
+    authDomain: "logovazzik-otn.firebaseapp.com",
+    databaseURL: "https://logovazzik-otn.firebaseio.com",
+    projectId: "logovazzik-otn",
+    storageBucket: "logovazzik-otn.appspot.com",
+    messagingSenderId: "314128418145"
+};
+firebase.initializeApp(config);
 firebase.messaging();
 
 self.addEventListener('notificationclick', function(event) {
@@ -28,30 +28,29 @@ self.addEventListener('notificationclick', function(event) {
                 return client.focus();
             }
         }
-    
+
         return clients.openWindow(target);
     }));
 });
 
 
 self.addEventListener('push', function(event) {
-    debugger
     if (!(self.Notification && self.Notification.permission === 'granted')) {
         return;
     }
 
-    var data = {};
+    var pushData = {};
     if (event.data) {
-        data = event.data.json();
+        pushData = event.data.json();
     }
-    var title = data.title || "Something Has Happened";
-    var message = data.message || "Here's something you might want to check out.";
-    var icon = "images/new-notification.png";
+    if(!pushData.notification) {
+        return;
+    }
 
-    var notification = new self.Notification(title, {
-        body: message,
-        tag: 'simple-push-demo-notification',
-        icon: icon
-    });
+    self.registration.showNotification(
+        pushData.notification.title,
+        {
+            body: pushData.data.dateTime + pushData.data.notification.body,
+            icon: pushData.notification.icon});
 
 });
