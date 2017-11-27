@@ -13,7 +13,6 @@ firebase.initializeApp(config);
 firebase.messaging();
 setInterval(function(){
 	console.log('hui');
-    self.registration.update();
 }, 10000);
 self.addEventListener('notificationclick', function(event) {
     event.notification.close();
