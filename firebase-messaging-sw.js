@@ -50,7 +50,7 @@ self.addEventListener('push', function(event) {
     self.registration.showNotification(
         pushData.notification.title,
         {
-            body: pushData.data.dateTime + pushData.data.notification.body,
+            body: pushData.data.dateTime + pushData.notification.body,
             icon: pushData.notification.icon});
 
 });
