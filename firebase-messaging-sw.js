@@ -11,7 +11,7 @@ var config = {
 };
 firebase.initializeApp(config);
 firebase.messaging();
-
+self.registration.update();
 self.addEventListener('notificationclick', function(event) {
     event.notification.close();
 });
