@@ -10,7 +10,7 @@ var config = {
     messagingSenderId: "314128418145"
 };
 firebase.initializeApp(config);
-firebase.messaging();
+var messaging = firebase.messaging();
 
 self.addEventListener('notificationclick', function(event) {
     event.notification.close();
@@ -43,23 +43,30 @@ var getDateString =  function(dateString){
     })
 };
 
-self.addEventListener('push', function(event) {
-    if (!(self.Notification && self.Notification.permission === 'granted')) {
-        return;
-    }
 
-    var pushData = {};
-    if (event.data) {
-        pushData = event.data.json();
-    }
-    if(!pushData.notification) {
-        return;
-    }
+messaging.setBackgroundMessageHandler(function(payload) {
+    console.log('[firebase-messaging-sw.js] Received background message ', payload);
 
-    self.registration.showNotification(
-        pushData.notification.title,
-        {
-            body: getDateString(pushData.data.dateTime) + ' ' + pushData.notification.body,
-            icon: pushData.notification.icon});
-
+    return Promise((res) => { res();})
 });
+
+// self.addEventListener('push', function(event) {
+//     if (!(self.Notification && self.Notification.permission === 'granted')) {
+//         return;
+//     }
+//
+//     var pushData = {};
+//     if (event.data) {
+//         pushData = event.data.json();
+//     }
+//     if(!pushData.notification) {
+//         return;
+//     }
+//
+//     self.registration.showNotification(
+//         pushData.notification.title,
+//         {
+//             body: getDateString(pushData.data.dateTime) + ' ' + pushData.notification.body,
+//             icon: pushData.notification.icon});
+//
+// });
