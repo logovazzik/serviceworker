@@ -45,16 +45,16 @@ var getDateString =  function(dateString){
 
 
 messaging.setBackgroundMessageHandler(function(payload) {
-    console.log('[firebase-messaging-sw.js] Received background message ', payload);
-    // Customize notification here
-    const notificationTitle = 'Background Message Title';
-    const notificationOptions = {
-        body: 'Background Message body.',
-        icon: '/firebase-logo.png'
-    };
+      if (!(self.Notification && self.Notification.permission === 'granted')) {
+         return;
+      }
 
-    return self.registration.showNotification(notificationTitle,
-        notificationOptions);
+     self.registration.showNotification(
+        payload.notification.title,
+         {
+             body: getDateString(payload.dateTime) + ' ' + payload.notification.body,
+             icon: payload.notification.icon
+        });
 });
 
 // self.addEventListener('push', function(event) {
