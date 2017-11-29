@@ -98,9 +98,7 @@ function TokenService(){
                 this.getToken();
             }
 			
-			 messaging.onMessage(function(payload) {
-                console.log('Message received. ', payload);
-            })
+
             // Callback fired if Instance ID token is updated.
             messaging.onTokenRefresh(function() {
                 messaging.getToken()

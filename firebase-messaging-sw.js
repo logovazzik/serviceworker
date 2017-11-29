@@ -21,6 +21,9 @@ var applyTemplate = function (template, replacements) {
         return undefined !== replacements[n] ? encodeURIComponent(replacements[n]) : "";
     });
 };
+messaging.onMessage(function(payload) {
+    console.log('Message received from sw. ', payload);
+})
 
 var getDateString =  function(dateString){
     if(!dateString){
@@ -56,24 +59,3 @@ messaging.setBackgroundMessageHandler(function(payload) {
              icon: payload.data.icon
         });
 });
-
-// self.addEventListener('push', function(event) {
-//     if (!(self.Notification && self.Notification.permission === 'granted')) {
-//         return;
-//     }
-//
-//     var pushData = {};
-//     if (event.data) {
-//         pushData = event.data.json();
-//     }
-//     if(!pushData.notification) {
-//         return;
-//     }
-//
-//     self.registration.showNotification(
-//         pushData.notification.title,
-//         {
-//             body: getDateString(pushData.data.dateTime) + ' ' + pushData.notification.body,
-//             icon: pushData.notification.icon});
-//
-// });
