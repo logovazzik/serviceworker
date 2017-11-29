@@ -49,11 +49,11 @@ messaging.setBackgroundMessageHandler(function(payload) {
          return;
       }
 
-     self.registration.showNotification(
-        payload.notification.title,
+    return self.registration.showNotification(
+        payload.data.title,
          {
-             body: getDateString(payload.dateTime) + ' ' + payload.notification.body,
-             icon: payload.notification.icon
+             body: getDateString(payload.data.dateTime) + ' ' + payload.data.body,
+             icon: payload.data.icon
         });
 });
 
