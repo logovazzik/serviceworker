@@ -9,7 +9,7 @@ showNotification = (function(){
         if(!dateString){
             return '';
         }
-        
+
         var dateTemplate = '{dd}.{MM}.{YY} {HH}:{mm}';
         var dateParsed = new Date(dateString);
         var prefixZero = function(value){
@@ -28,7 +28,7 @@ showNotification = (function(){
         })
     };
     
-    return function(registration) {
+    return function(registration, payload) {
         return registration.showNotification(
             payload.data.title,
              {
