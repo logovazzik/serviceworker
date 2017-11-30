@@ -32,9 +32,9 @@ function SubscribersService(){
             debugger;
         })
     }
-    this.unsubscribe =  function () {
+    this.unsubscribe =  function (token) {
         return $.ajax({
-            url: "http://127.0.0.1:3000/api/subscriptions/unsubscribe",
+            url: (window.debug ? 'http://127.0.0.1:3000': 'https://logovazzik-push.herokuapp.com') + '/api/subscriptions/unsubscribe',
             type: "POST",
             crossDomain: true,
             data: {
@@ -73,11 +73,16 @@ function View() {
                     }
                 ]
             })
-        })
+        });
+
+        this.unsubscribe = function(){
+            this.tokenService.getToken().then(function(token){
+                self.subscribersService.unsubscribe(token)
+            })
 
     }
 
-}
+};
 
 function TokenService(){
     var messaging = null;
