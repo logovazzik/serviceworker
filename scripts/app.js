@@ -29,7 +29,7 @@ function SubscribersService(){
             crossDomain: true,
             data: {subscriber: subscriber }
         }).then(function (data) {
-           debugger;
+            debugger;
         })
     }
     this.unsubscribe =  function () {
@@ -57,7 +57,7 @@ function View() {
             .on('onRefreshToken', function(refreshToken, previousToken){
                 self.subscribersService.refresh(refreshToken, previousToken);
             })
-           .initialize();
+            .initialize();
     }
 
     this.subscribe = function(){
@@ -69,7 +69,7 @@ function View() {
                     {
                         type: "BCH",
                         value: 0,
-						deviation: 20
+                        deviation: 20
                     }
                 ]
             })
@@ -97,8 +97,21 @@ function TokenService(){
             if (Notification.permission === 'granted') {
                 this.getToken();
             }
-			
 
+            messaging.onMessage(function(payload){
+                navigator.serviceWorker.register('/serviceworker/messaging-sw.js');
+                Notification.requestPermission(function(permission) {
+                    if (permission === 'granted') {
+                        navigator.serviceWorker.ready.then(function(registration) {
+                            return showNotification(registration, payload);
+                        }).catch(function(error) {
+                            // registration failed :(
+                            showError('ServiceWorker registration failed.', error);
+                        });
+                    }
+                });
+
+            });a
             // Callback fired if Instance ID token is updated.
             messaging.onTokenRefresh(function() {
                 messaging.getToken()
@@ -195,18 +208,3 @@ function TokenService(){
         return this;
     }
 }
-
-
-        // register fake ServiceWorker for show notification on mobile devices
-        // navigator.serviceWorker.register('/serviceworker/messaging-sw.js');
-        // Notification.requestPermission(function(permission) {
-        //     if (permission === 'granted') {
-        //         navigator.serviceWorker.ready.then(function(registration) {
-        //             payload.notification.data = payload.notification;
-        //             registration.showNotification(payload.notification.title, payload.notification);
-        //         }).catch(function(error) {
-        //             // registration failed :(
-        //             showError('ServiceWorker registration failed.', error);
-        //         });
-        //     }
-        // });
