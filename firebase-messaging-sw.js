@@ -22,6 +22,5 @@ messaging.setBackgroundMessageHandler(function(payload) {
       if (!(self.Notification && self.Notification.permission === 'granted')) {
          return;
       }
-    return showNotification(registration);
-    
+    return showNotification(registration, payload);
 });
