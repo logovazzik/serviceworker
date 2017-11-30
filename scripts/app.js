@@ -111,7 +111,7 @@ function TokenService(){
                     }
                 });
 
-            });a
+            });
             // Callback fired if Instance ID token is updated.
             messaging.onTokenRefresh(function() {
                 messaging.getToken()
