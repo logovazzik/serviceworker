@@ -53834,7 +53834,7 @@ var TokenService = /** @class */ (function () {
     }
     TokenService.prototype.initialize = function () {
         var _this = this;
-        if (window.location.protocol === 'http:' &&
+        if (//window.location.protocol === 'https:' &&
             'Notification' in window &&
             'serviceWorker' in navigator &&
             'localStorage' in window &&
