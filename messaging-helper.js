@@ -22,7 +22,7 @@ var showNotification = (function(){
             }
             return value;
         };
-       var template = isToday(dateParsedDay) ? timeTemplate: dateTemplate + ' ' + timeTemplate;
+        var template = isToday(dateParsedDay) ? timeTemplate: dateTemplate + ' ' + timeTemplate;
         return applyTemplate(template, {
             dd: prefixZero(dateParsedDay),
             MM: prefixZero(dateParsed.getMonth() + 1),
@@ -31,14 +31,14 @@ var showNotification = (function(){
             mm: prefixZero(dateParsed.getMinutes())
         })
     };
-    
+
     return function(registration, payload) {
         return registration.showNotification(
             payload.data.title,
-             {
-                 body: getDateString(payload.data.dateTime) + ' ' + payload.data.body,
-                 icon: payload.data.icon
+            {
+                body: getDateString(payload.data.dateTime) + ' ' + payload.data.body,
+                icon: payload.data.icon
             });
-        
+
     }
 })();
