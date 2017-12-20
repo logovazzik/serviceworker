@@ -22138,7 +22138,7 @@ var SubscriptionsService = /** @class */ (function () {
     SubscriptionsService.prototype._refreshSubscriber = function (oldToken, newToken) {
         var _this = this;
         return __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-            url: Object(__WEBPACK_IMPORTED_MODULE_0__constants__["a" /* applyTemplate */])(this.api.host + this.api.endpoints.subscriber.refresh, { token: oldToken }),
+            url: Object(__WEBPACK_IMPORTED_MODULE_0__constants__["a" /* applyTemplate */])(window['debug'] ? this.api.host.debug : this.api.host.release + this.api.endpoints.subscriber.refresh, { token: oldToken }),
             type: "PUT",
             crossDomain: true,
             data: {
@@ -22151,7 +22151,7 @@ var SubscriptionsService = /** @class */ (function () {
     SubscriptionsService.prototype.getSubscriber = function (token) {
         var _this = this;
         return __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-            url: Object(__WEBPACK_IMPORTED_MODULE_0__constants__["a" /* applyTemplate */])(this.api.host + this.api.endpoints.subscriber.get, { token: token }),
+            url: Object(__WEBPACK_IMPORTED_MODULE_0__constants__["a" /* applyTemplate */])(window['debug'] ? this.api.host.debug : this.api.host.release + this.api.endpoints.subscriber.get, { token: token }),
             type: "GET",
             crossDomain: true
         }).then(function (subscriber) {
@@ -22174,7 +22174,7 @@ var SubscriptionsService = /** @class */ (function () {
         var _this = this;
         return this._initializeToken().then(function (token) {
             return __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: _this.api.host + _this.api.endpoints.subscriber.add,
+                url: window['debug'] ? _this.api.host.debug : _this.api.host.release + _this.api.endpoints.subscriber.add,
                 type: "POST",
                 crossDomain: true,
                 data: JSON.stringify({
@@ -22200,7 +22200,7 @@ var SubscriptionsService = /** @class */ (function () {
     };
     SubscriptionsService.prototype.updateSubscription = function (subscription) {
         return __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-            url: Object(__WEBPACK_IMPORTED_MODULE_0__constants__["a" /* applyTemplate */])(this.api.host + this.api.endpoints.subscriptions.update, {
+            url: Object(__WEBPACK_IMPORTED_MODULE_0__constants__["a" /* applyTemplate */])(window['debug'] ? this.api.host.debug : this.api.host.release + this.api.endpoints.subscriptions.update, {
                 token: __WEBPACK_IMPORTED_MODULE_2__storage_service__["a" /* default */].subscriber.token
             }),
             type: "PUT",
@@ -22217,7 +22217,7 @@ var SubscriptionsService = /** @class */ (function () {
     SubscriptionsService.prototype.removeSubscription = function (subscription) {
         if (subscription.uid) {
             return __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: Object(__WEBPACK_IMPORTED_MODULE_0__constants__["a" /* applyTemplate */])(this.api.host + this.api.endpoints.subscriptions.delete, {
+                url: Object(__WEBPACK_IMPORTED_MODULE_0__constants__["a" /* applyTemplate */])(window['debug'] ? this.api.host.debug : this.api.host.release + this.api.endpoints.subscriptions.delete, {
                     token: __WEBPACK_IMPORTED_MODULE_2__storage_service__["a" /* default */].subscriber.token,
                     uid: subscription.uid
                 }),
@@ -22234,7 +22234,7 @@ var SubscriptionsService = /** @class */ (function () {
     };
     SubscriptionsService.prototype.getMetadata = function () {
         return __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-            url: this.api.host + this.api.endpoints.metadata,
+            url: window['debug'] ? this.api.host.debug : this.api.host.release + this.api.endpoints.metadata,
             type: "GET",
             crossDomain: true
         }).then(function (metaData) {
@@ -41873,7 +41873,7 @@ var subscribers = {
 /* 514 */
 /***/ (function(module, exports) {
 
-module.exports = {"API":{"host":"http://localhost:4200/","endpoints":{"subscriptions":{"update":"api/subscriber/{token}/subscription","delete":"api/subscriber/{token}/subscription/{uid}","get":"api/subscriber/{token}/subscriptions"},"subscriber":{"get":"api/subscriber/{token}","add":"api/subscriber","refresh":"api/subscriber/{token}"},"metadata":"api/subscriber/subscriptions/metadata"}}}
+module.exports = {"API":{"host":{"dev":"http://localhost:4200/","release":"https://logovazzik-push.herokuapp.com/"},"endpoints":{"subscriptions":{"update":"api/subscriber/{token}/subscription","delete":"api/subscriber/{token}/subscription/{uid}","get":"api/subscriber/{token}/subscriptions"},"subscriber":{"get":"api/subscriber/{token}","add":"api/subscriber","refresh":"api/subscriber/{token}"},"metadata":"api/subscriber/subscriptions/metadata"}}}
 
 /***/ }),
 /* 515 */
@@ -67260,4 +67260,4 @@ if (true) {
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.66dfee2b.js.map
+//# sourceMappingURL=main.fb1b8e2b.js.map
