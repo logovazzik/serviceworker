@@ -41873,7 +41873,7 @@ var subscribers = {
 /* 514 */
 /***/ (function(module, exports) {
 
-module.exports = {"API":{"host":{"dev":"http://localhost:4200/","release":"https://logovazzik-push.herokuapp.com/"},"endpoints":{"subscriptions":{"update":"api/subscriber/{token}/subscription","delete":"api/subscriber/{token}/subscription/{uid}","get":"api/subscriber/{token}/subscriptions"},"subscriber":{"get":"api/subscriber/{token}","add":"api/subscriber","refresh":"api/subscriber/{token}"},"metadata":"api/subscriber/subscriptions/metadata"}}}
+module.exports = {"API":{"host":{"dev":"http://localhost:4200/","release":"https://logovazzik-push2.herokuapp.com/"},"endpoints":{"subscriptions":{"update":"api/subscriber/{token}/subscription","delete":"api/subscriber/{token}/subscription/{uid}","get":"api/subscriber/{token}/subscriptions"},"subscriber":{"get":"api/subscriber/{token}","add":"api/subscriber","refresh":"api/subscriber/{token}"},"metadata":"api/subscriber/subscriptions/metadata"}}}
 
 /***/ }),
 /* 515 */
